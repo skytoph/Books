@@ -10,7 +10,7 @@ data class CategoryWithBooks(
 
     @Relation(
         parentColumn = "category_id",
-        entityColumn = "book_id",
+        entityColumn = "category_id",
     )
     val books: List<BookEntity>
 )

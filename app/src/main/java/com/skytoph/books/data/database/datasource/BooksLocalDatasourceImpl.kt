@@ -12,7 +12,7 @@ class BooksLocalDatasourceImpl(
     override suspend fun getCategories(): List<CategoryEntity> =
         database.categoriesDao().categories()
 
-    override suspend fun getBooks(categoryId: String): List<BookEntity> =
+    override suspend fun getBooks(categoryId: Int): List<BookEntity> =
         database.booksDao().books(categoryId).books
 
     override suspend fun saveBooks(categories: List<CategoryEntity>, books: List<BookEntity>) {

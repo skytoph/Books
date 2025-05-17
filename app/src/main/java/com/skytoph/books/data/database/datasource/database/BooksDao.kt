@@ -16,5 +16,5 @@ interface BooksDao {
 
     @Transaction
     @Query("SELECT * FROM categories WHERE category_id = :categoryId")
-    suspend fun books(categoryId: String): CategoryWithBooks
+    suspend fun books(categoryId: Int): CategoryWithBooks
 }

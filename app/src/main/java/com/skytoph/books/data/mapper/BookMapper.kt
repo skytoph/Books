@@ -17,7 +17,8 @@ fun BookEntity.mapToDomain(): Book = Book(
         publisher = publisher
     ),
     buyLinks = buyLinks?.map { BookBuyLink(name = it.name, url = it.url) } ?: emptyList(),
-    rank = rank
+    rank = rank,
+    categoryId = category
 )
 
 fun Book.mapToEntity(): BookEntity = BookEntity(
@@ -28,10 +29,11 @@ fun Book.mapToEntity(): BookEntity = BookEntity(
     description = info.description,
     author = info.author,
     publisher = info.publisher,
-    bookImage = info.bookImage
+    bookImage = info.bookImage,
+    category = categoryId
 )
 
-fun BookNetwork.mapToDomain(): Book = Book(
+fun BookNetwork.mapToDomain(categoryId: Int): Book = Book(
     id = isbn13,
     info = BookInfo(
         title = title,
@@ -41,5 +43,6 @@ fun BookNetwork.mapToDomain(): Book = Book(
         publisher = publisher
     ),
     buyLinks = buyLinks?.map { BookBuyLink(name = it.name, url = it.url) } ?: emptyList(),
-    rank = rank
+    rank = rank,
+    categoryId = categoryId
 )
