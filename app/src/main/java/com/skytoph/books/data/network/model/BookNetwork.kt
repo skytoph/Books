@@ -27,5 +27,5 @@ data class BookNetwork(
     val title: String,
 
     @SerializedName("primary_isbn13")
-    val isbn13: Long,
+    val isbn13: String,
 )

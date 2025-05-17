@@ -15,6 +15,6 @@ interface BooksDao {
     suspend fun insert(vararg book: BookEntity)
 
     @Transaction
-    @Query("SELECT * FROM books WHERE book_id = :categoryId")
-    suspend fun books(categoryId: Int): CategoryWithBooks
+    @Query("SELECT * FROM categories WHERE category_id = :categoryId")
+    suspend fun books(categoryId: String): CategoryWithBooks
 }

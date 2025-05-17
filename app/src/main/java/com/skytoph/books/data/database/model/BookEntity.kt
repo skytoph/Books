@@ -10,7 +10,7 @@ data class BookEntity(
 
     @PrimaryKey
     @ColumnInfo(name = "book_id")
-    val isbn13: Long,
+    val isbn13: String,
 
     @ColumnInfo(name = "title")
     val title: String,
