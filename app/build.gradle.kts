@@ -40,6 +40,12 @@ android {
     }
 }
 
+kotlin {
+    sourceSets.all {
+        languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -61,6 +67,7 @@ dependencies {
 
     // Retrofit
     implementation(libs.retrofit)
+    implementation(libs.retrofit.interceptor)
     implementation(libs.retrofit.gson)
 
     // Room

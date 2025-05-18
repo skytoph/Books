@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="books_base_url" translatable="false">https://api.nytimes.com/svc/books/v3/</string>
+</resources>
