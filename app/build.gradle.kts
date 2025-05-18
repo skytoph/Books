@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.secrets)
+    alias(libs.plugins.ktx.serialization)
 }
 
 android {
@@ -83,4 +84,6 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.network)
 
+    // Serialization
+    implementation(libs.serialization)
 }
