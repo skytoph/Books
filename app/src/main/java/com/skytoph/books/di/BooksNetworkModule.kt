@@ -46,6 +46,6 @@ object BooksNetworkModule {
         )
 
     @Provides
-    fun categoryMapper(converter: ConvertDate): CategoryDomainMapper =
+    fun categoryMapper(@IsoConverter converter: ConvertDate): CategoryDomainMapper =
         CategoryDomainMapperImpl(converter = converter)
 }

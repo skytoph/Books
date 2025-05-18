@@ -2,5 +2,6 @@
     <string name="app_name">Books</string>
 
     <string name="pattern_date" translatable="false">yyyy-MM-dd</string>
+    <string name="pattern_day_month" translatable="false">dd-MM</string>
     <string name="database_name" translatable="false">books_db</string>
 </resources>

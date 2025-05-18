@@ -8,13 +8,34 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class IsoConverter
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class DayMonthConverter
 
 @Module
 @InstallIn(SingletonComponent::class)
 object ConverterModule {
 
     @Provides
-    fun converter(formatProvider: DateFormatProvider, localeProvider: LocaleProvider): ConvertDate =
+    @IsoConverter
+    fun converterIso(@IsoFormat formatProvider: DateFormatProvider, localeProvider: LocaleProvider): ConvertDate =
+        ConvertDateImpl(
+            formatProvider = formatProvider,
+            localeProvider = localeProvider
+        )
+
+    @Provides
+    @DayMonthConverter
+    fun converterDayMonth(
+        @DayMonthFormat formatProvider: DateFormatProvider,
+        localeProvider: LocaleProvider
+    ): ConvertDate =
         ConvertDateImpl(
             formatProvider = formatProvider,
             localeProvider = localeProvider

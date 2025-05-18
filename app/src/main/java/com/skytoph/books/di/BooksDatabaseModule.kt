@@ -23,7 +23,11 @@ object BooksDatabaseModule {
 
     @Provides
     @Singleton
-    fun database(@ApplicationContext context: Context, gson: Gson, converter: ConvertDate): BooksDatabase =
+    fun database(
+        @ApplicationContext context: Context,
+        @IsoConverter converter: ConvertDate,
+        gson: Gson
+    ): BooksDatabase =
         Room
             .databaseBuilder(
                 context = context,
