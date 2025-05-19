@@ -1,15 +1,11 @@
 package com.skytoph.books.ui.feature_categories.component
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,24 +40,15 @@ fun CategoriesContent(state: CategoriesUiState, onCategoryClick: (CategoryUi) ->
 
 @Composable
 fun CategoriesList(categories: List<CategoryUi>, onCategoryClick: (CategoryUi) -> Unit) {
-    LazyColumn {
-        items(items = categories) { category ->
-            CategoryItem(category = category, onCategoryClick = { onCategoryClick(category) })
-        }
-    }
-}
-
-@Composable
-fun CategoryItem(category: CategoryUi, onCategoryClick: () -> Unit) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
+    LazyColumn(
         modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onCategoryClick)
-            .padding(16.dp)
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text(text = category.name)
-        category.updated?.let { Text(text = it) }
+        items(items = categories) { category ->
+            CategoryItem(category = category, onClick = { onCategoryClick(category) })
+        }
     }
 }
 

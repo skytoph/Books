@@ -11,4 +11,5 @@
 
     <string name="fail_loading_books">Failed to load books</string>
     <string name="title_categories">Categories</string>
+    <string name="label_category_published">published</string>
 </resources>
