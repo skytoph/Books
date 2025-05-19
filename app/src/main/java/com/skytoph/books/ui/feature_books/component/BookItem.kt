@@ -1,10 +1,10 @@
 package com.skytoph.books.ui.feature_books.component
 
-import androidx.compose.animation.Crossfade
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -86,7 +86,7 @@ fun BookItem(
             Spacer(modifier = Modifier.width(16.dp))
 
             Column {
-                Row {
+                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -123,18 +123,14 @@ fun BookItem(
                     }
                 }
 
-                Crossfade(
-                    targetState = isExpanded,
-                    label = stringResource(R.string.label_crossfade_book_description)
-                ) { isExpanded ->
-                    Text(
-                        text = book.description,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        maxLines = if (isExpanded) Int.MAX_VALUE else 2,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
+                Text(
+                    text = book.description,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.animateContentSize()
+                )
             }
         }
     }

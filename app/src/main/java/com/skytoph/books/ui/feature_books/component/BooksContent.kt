@@ -2,7 +2,9 @@ package com.skytoph.books.ui.feature_books.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -27,9 +29,7 @@ fun BooksContent(
     buy: (BookUi) -> Unit = {},
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(top = 16.dp),
+        modifier = Modifier.fillMaxSize(),
     ) {
         when (state.data) {
             DataState.Loading -> Loading(modifier = Modifier.align(Alignment.Center))
@@ -66,6 +66,9 @@ fun BooksList(
                 onExpand = { expand(index) },
                 onBuy = { buy(book) }
             )
+        }
+        item {
+            Spacer(Modifier.height(0.dp))
         }
     }
 }

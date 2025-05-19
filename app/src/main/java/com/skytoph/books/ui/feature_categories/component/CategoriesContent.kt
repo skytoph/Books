@@ -2,7 +2,9 @@ package com.skytoph.books.ui.feature_categories.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -48,6 +50,9 @@ fun CategoriesList(categories: List<CategoryUi>, onCategoryClick: (CategoryUi) -
     ) {
         items(items = categories) { category ->
             CategoryItem(category = category, onClick = { onCategoryClick(category) })
+        }
+        item {
+            Spacer(Modifier.height(0.dp))
         }
     }
 }
