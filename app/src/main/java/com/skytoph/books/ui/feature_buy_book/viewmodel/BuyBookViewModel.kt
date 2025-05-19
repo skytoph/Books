@@ -18,7 +18,7 @@ class BuyBookViewModel @Inject constructor(
     private val route: BooksRoutes.Buy = savedStateHandle.toRoute()
 
     val state: StateFlow<BuyBookState>
-        field = MutableStateFlow<BuyBookState>(BuyBookState(url = route.url))
+        field = MutableStateFlow<BuyBookState>(BuyBookState(url = route.url, linkName = route.title))
 
     fun updateCanNavigateBack(canNavigateBackHandled: Boolean) {
         state.value = state.value.copy(canNavigateBack = canNavigateBackHandled)

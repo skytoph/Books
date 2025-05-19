@@ -78,9 +78,13 @@ fun MainScreen(
                 .padding(innerPadding)
                 .consumeWindowInsets(innerPadding)
         ) {
-            MainNavGraph(controller = navController, showMessage = {
-                coroutineScope.launch { snackbarHostState.showSnackbar(it) }
-            })
+            MainNavGraph(
+                controller = navController,
+                showMessage = {
+                    coroutineScope.launch { snackbarHostState.showSnackbar(it) }
+                },
+                updateAppBar = { viewModel.updateAppBar(title = it.title, canNavigateUp = it.canNavigateUp) }
+            )
         }
     }
 }

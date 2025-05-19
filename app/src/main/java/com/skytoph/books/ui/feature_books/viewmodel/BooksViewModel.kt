@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.skytoph.books.domain.usecase.GetBooksUseCase
-import com.skytoph.books.ui.appbar.InitAppBar
 import com.skytoph.books.ui.feature_books.BooksEvent
 import com.skytoph.books.ui.feature_books.state.BooksUiState
 import com.skytoph.books.ui.mapper.mapResult
@@ -20,21 +19,16 @@ import javax.inject.Inject
 @HiltViewModel
 class BooksViewModel @Inject constructor(
     private val getBooks: GetBooksUseCase,
-    private val appBar: InitAppBar,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val state: StateFlow<BooksUiState>
-        field = MutableStateFlow<BooksUiState>(BooksUiState())
-
     private val route: BooksRoutes.Books = savedStateHandle.toRoute()
+
+    val state: StateFlow<BooksUiState>
+        field = MutableStateFlow<BooksUiState>(BooksUiState(categoryTitle = route.categoryName))
 
     init {
         initializeBooks()
-    }
-
-    fun initializeAppBar() {
-        appBar.initAppBar(title = route.categoryName, canNavigateUp = route.canNavigateBack)
     }
 
     private fun initializeBooks() {

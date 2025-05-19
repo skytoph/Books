@@ -31,29 +31,29 @@ fun CategoryItem(
     onClick: () -> Unit = {}
 ) {
     Card(
-        modifier = Modifier.Companion
+        modifier = Modifier
             .fillMaxWidth(),
         elevation = CardDefaults.cardElevation(4.dp),
         shape = MaterialTheme.shapes.small
     ) {
         Row(
-            modifier = Modifier.Companion
+            modifier = Modifier
                 .fillMaxWidth()
                 .clip(MaterialTheme.shapes.small)
                 .clickable(onClick = onClick)
                 .padding(16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Companion.CenterVertically
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = category.name,
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.Companion.weight(1f)
+                modifier = Modifier.weight(1f)
             )
             category.updated?.let {
-                Spacer(modifier = Modifier.Companion.width(4.dp))
-                Column(horizontalAlignment = Alignment.Companion.End) {
+                Spacer(modifier = Modifier.width(4.dp))
+                Column(horizontalAlignment = Alignment.End) {
                     Text(
                         text = stringResource(R.string.label_category_published),
                         style = MaterialTheme.typography.bodySmall,

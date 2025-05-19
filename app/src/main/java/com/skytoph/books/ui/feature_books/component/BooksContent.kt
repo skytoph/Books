@@ -27,12 +27,12 @@ fun BooksContent(
     buy: (BookUi) -> Unit = {},
 ) {
     Box(
-        modifier = Modifier.Companion
+        modifier = Modifier
             .fillMaxSize()
             .padding(top = 16.dp),
     ) {
         when (state.data) {
-            DataState.Loading -> Loading(modifier = Modifier.Companion.align(Alignment.Companion.Center))
+            DataState.Loading -> Loading(modifier = Modifier.align(Alignment.Center))
 
             is DataState.Success -> BooksList(
                 books = state.data.books,
@@ -41,7 +41,7 @@ fun BooksContent(
                 buy = buy
             )
 
-            else -> ErrorFullscreen(modifier = Modifier.Companion.align(Alignment.Companion.Center))
+            else -> ErrorFullscreen(modifier = Modifier.align(Alignment.Center))
         }
     }
 }

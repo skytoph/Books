@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.skytoph.books.R
+import com.skytoph.books.ui.appbar.AppBarState
 import com.skytoph.books.ui.component.ScaleTransitionDirection
 import com.skytoph.books.ui.component.scaleIntoContainer
 import com.skytoph.books.ui.component.scaleOutOfContainer
@@ -21,19 +22,27 @@ import com.skytoph.books.ui.feature_categories.screen.CategoriesScreen
 import com.skytoph.books.ui.snackbar.SnackbarMessage
 
 @Composable
-fun MainNavGraph(controller: NavHostController, showMessage: (SnackbarMessage) -> Unit) {
+fun MainNavGraph(
+    controller: NavHostController,
+    showMessage: (SnackbarMessage) -> Unit,
+    updateAppBar: (AppBarState) -> Unit
+) {
     NavHost(
         navController = controller,
         startDestination = BooksRoutes.Categories(title = stringResource(R.string.title_categories)),
-        modifier = Modifier.Companion.fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         composable<BooksRoutes.Categories>(
             exitTransition = { fadeOut(tween(delayMillis = 60)) },
             popEnterTransition = { fadeIn(tween(delayMillis = 60)) }
         ) {
-            CategoriesScreen(navigateToBooks = { category ->
-                controller.navigate(route = BooksRoutes.Books(categoryId = category.id, categoryName = category.name))
-            })
+            CategoriesScreen(
+                navigateToBooks = { category ->
+                    controller.navigate(
+                        route = BooksRoutes.Books(categoryId = category.id, categoryName = category.name)
+                    )
+                }, updateAppBar = updateAppBar
+            )
         }
 
         composable<BooksRoutes.Books>(
@@ -46,9 +55,10 @@ fun MainNavGraph(controller: NavHostController, showMessage: (SnackbarMessage) -
             popEnterTransition = { fadeIn(tween(delayMillis = 60)) }
         ) {
             BooksScreen(
-                navigateUp = controller::navigateUp,
                 showMessage = showMessage,
-                openLink = { controller.navigate(route = BooksRoutes.Buy(url = it.url, title = it.name)) }
+                navigateUp = controller::navigateUp,
+                openLink = { controller.navigate(route = BooksRoutes.Buy(url = it.url, title = it.name)) },
+                updateAppBar = updateAppBar
             )
         }
 
@@ -60,7 +70,7 @@ fun MainNavGraph(controller: NavHostController, showMessage: (SnackbarMessage) -
                 scaleOutOfContainer(direction = ScaleTransitionDirection.INWARDS)
             },
         ) {
-            BuyBookScreen()
+            BuyBookScreen(updateAppBar = updateAppBar)
         }
     }
 }

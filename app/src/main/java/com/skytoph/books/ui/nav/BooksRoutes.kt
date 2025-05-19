@@ -9,13 +9,11 @@ sealed interface BooksRoutes {
     data class Books(
         val categoryId: Int,
         val categoryName: String,
-        val canNavigateBack: Boolean = true
     ) : BooksRoutes
 
     @Serializable
     data class Categories(
         val title: String,
-        val canNavigateBack: Boolean = false
     ) : BooksRoutes
 
     @Serializable

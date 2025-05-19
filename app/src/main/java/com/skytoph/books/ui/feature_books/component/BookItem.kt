@@ -48,13 +48,13 @@ fun BookItem(
     onBuy: () -> Unit = {},
 ) {
     Card(
-        modifier = Modifier.Companion
+        modifier = Modifier
             .fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Row(
-            modifier = Modifier.Companion
+            modifier = Modifier
                 .animateContentSize()
                 .clip(MaterialTheme.shapes.medium)
                 .clickable(
@@ -65,8 +65,8 @@ fun BookItem(
                 .padding(16.dp)
         ) {
             Box(
-                modifier = Modifier.Companion
-                    .background(color = Color.Companion.White, shape = MaterialTheme.shapes.extraSmall)
+                modifier = Modifier
+                    .background(color = Color.White, shape = MaterialTheme.shapes.extraSmall)
                     .size(width = 88.dp, height = 120.dp)
             ) {
                 AsyncImage(
@@ -74,21 +74,21 @@ fun BookItem(
                         .data(book.bookImage)
                         .crossfade(true)
                         .build(),
-                    contentScale = ContentScale.Companion.Fit,
+                    contentScale = ContentScale.Fit,
                     contentDescription = book.title,
                     placeholder = painterResource(R.drawable.book),
-                    modifier = Modifier.Companion
+                    modifier = Modifier
                         .fillMaxSize()
                         .padding(4.dp)
                 )
             }
 
-            Spacer(modifier = Modifier.Companion.width(16.dp))
+            Spacer(modifier = Modifier.width(16.dp))
 
             Column {
                 Row {
                     Column(
-                        modifier = Modifier.Companion
+                        modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f)
                     ) {
@@ -132,7 +132,7 @@ fun BookItem(
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         maxLines = if (isExpanded) Int.MAX_VALUE else 2,
-                        overflow = TextOverflow.Companion.Ellipsis,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }
