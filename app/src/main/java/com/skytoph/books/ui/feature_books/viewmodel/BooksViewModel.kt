@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.skytoph.books.domain.usecase.GetBooksUseCase
 import com.skytoph.books.ui.appbar.InitAppBar
+import com.skytoph.books.ui.feature_books.BooksEvent
 import com.skytoph.books.ui.feature_books.state.BooksUiState
 import com.skytoph.books.ui.mapper.mapResult
 import com.skytoph.books.ui.nav.BooksRoutes
@@ -30,16 +31,16 @@ class BooksViewModel @Inject constructor(
 
     init {
         initializeBooks()
-        initializeAppBar()
     }
 
-    private fun initializeAppBar() {
+    fun initializeAppBar() {
         appBar.initAppBar(title = route.categoryName, canNavigateUp = route.canNavigateBack)
     }
 
     private fun initializeBooks() {
-        state.onStart {
-            state.value = state.value.copy(data = getBooks(route.categoryId).mapResult())
-        }.launchIn(viewModelScope)
+        state.onStart { onEvent(BooksEvent.UpdateData(getBooks(route.categoryId).mapResult())) }
+            .launchIn(viewModelScope)
     }
+
+    fun onEvent(event: BooksEvent) = event.handle(state)
 }

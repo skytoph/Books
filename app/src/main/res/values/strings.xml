@@ -12,4 +12,10 @@
     <string name="fail_loading_books">Failed to load books</string>
     <string name="title_categories">Categories</string>
     <string name="label_category_published">published</string>
+
+    <string name="book_label_author">By %1$s</string>
+    <string name="book_label_publisher">Publisher: %1$s</string>
+    <string name="book_label_rank">Rank: %1$s</string>
+    <string name="book_label_button_buy">Buy</string>
+    <string name="label_crossfade_book_description">label_crossfade_book_description</string>
 </resources>

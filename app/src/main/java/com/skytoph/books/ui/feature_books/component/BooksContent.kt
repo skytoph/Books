@@ -1,16 +1,11 @@
 package com.skytoph.books.ui.feature_books.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,38 +21,52 @@ import com.skytoph.books.ui.preview.BooksPreviewProvider
 import com.skytoph.books.ui.theme.BooksTheme
 
 @Composable
-fun BooksContent(state: BooksUiState) {
+fun BooksContent(
+    state: BooksUiState,
+    expand: (Int) -> Unit = {},
+    buy: (BookUi) -> Unit = {},
+) {
     Box(
         modifier = Modifier.Companion
             .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.background),
+            .padding(top = 16.dp),
     ) {
         when (state.data) {
             DataState.Loading -> Loading(modifier = Modifier.Companion.align(Alignment.Companion.Center))
-            is DataState.Success -> BooksList(books = state.data.books)
+
+            is DataState.Success -> BooksList(
+                books = state.data.books,
+                expandedIndex = state.data.expanded,
+                expand = expand,
+                buy = buy
+            )
+
             else -> ErrorFullscreen(modifier = Modifier.Companion.align(Alignment.Companion.Center))
         }
     }
 }
 
 @Composable
-fun BooksList(books: List<BookUi>) {
-    LazyColumn {
-        items(books) { category ->
-            BookItem(category)
-        }
-    }
-}
-
-@Composable
-private fun BookItem(category: BookUi) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.Companion
-            .padding(16.dp)
-            .fillMaxWidth()
+fun BooksList(
+    books: List<BookUi>,
+    expandedIndex: Int? = 0,
+    expand: (Int) -> Unit = {},
+    buy: (BookUi) -> Unit = {},
+) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text(text = category.title, color = MaterialTheme.colorScheme.onBackground)
+        itemsIndexed(items = books) { index, book ->
+            BookItem(
+                book = book,
+                isExpanded = expandedIndex == index,
+                onExpand = { expand(index) },
+                onBuy = { buy(book) }
+            )
+        }
     }
 }
 
