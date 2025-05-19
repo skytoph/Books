@@ -17,4 +17,10 @@ sealed interface BooksRoutes {
         val title: String,
         val canNavigateBack: Boolean = false
     ) : BooksRoutes
+
+    @Serializable
+    data class Buy(
+        val url: String,
+        val title: String,
+    ) : BooksRoutes
 }
