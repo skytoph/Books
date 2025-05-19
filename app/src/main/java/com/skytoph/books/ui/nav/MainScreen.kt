@@ -1,24 +1,36 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.skytoph.books.ui.nav
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.skytoph.books.R
 import com.skytoph.books.ui.appbar.AppBarViewModel
-import com.skytoph.books.ui.component.AppBar
 import com.skytoph.books.ui.component.PopupSnackbar
 import com.skytoph.books.ui.snackbar.SnackbarMessage
 import kotlinx.coroutines.launch
@@ -31,14 +43,25 @@ fun MainScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val appBarState by viewModel.appBarState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            AppBar(
-                state = appBarState,
-                navigateUp = navController::navigateUp,
-                modifier = Modifier.statusBarsPadding()
+            TopAppBar(
+                title = { Text(text = appBarState.title) },
+                navigationIcon = {
+                    if (appBarState.canNavigateUp)
+                        IconButton(onClick = navController::navigateUp) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = stringResource(R.string.description_navigate_up)
+                            )
+                        }
+                },
+                scrollBehavior = scrollBehavior
             )
         },
         snackbarHost = {
