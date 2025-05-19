@@ -7,6 +7,7 @@
     <string name="pattern_date" translatable="false">yyyy-MM-dd</string>
     <string name="pattern_day_month" translatable="false">dd-MM</string>
     <string name="database_name" translatable="false">books_db</string>
+    <string name="user_agent">Android 8.0</string>
 
 
     <string name="fail_loading_books">Failed to load books</string>
