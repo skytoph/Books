@@ -5,4 +5,5 @@ sealed interface SignInResult {
     object NoConnection : SignInResult
     object NoCredentialsAvailable : SignInResult
     object ErrorGeneral : SignInResult
+    object Canceled : SignInResult
 }

@@ -14,6 +14,10 @@
     <string name="title_categories">Categories</string>
     <string name="label_category_published">published</string>
 
+    <string name="fail_auth_no_connection">No internet connection.</string>
+    <string name="fail_auth_general">Something went wrong. Please try again later.</string>
+    <string name="fail_auth_no_credentials">No Google account found on this device.</string>
+
     <string name="book_label_author">By %1$s</string>
     <string name="book_label_publisher">Publisher: %1$s</string>
     <string name="book_label_rank">Rank: %1$s</string>

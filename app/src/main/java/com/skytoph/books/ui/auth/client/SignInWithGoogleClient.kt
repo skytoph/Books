@@ -5,6 +5,7 @@ import androidx.credentials.Credential
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
+import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.NoCredentialException
 import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
@@ -36,9 +37,11 @@ class SignInWithGoogleClient(
         } ?: SignInResult.ErrorGeneral
     } catch (_: NoCredentialException) {
         SignInResult.NoCredentialsAvailable
+    } catch (_: GetCredentialCancellationException) {
+        SignInResult.Canceled
     } catch (exception: Exception) {
         if (networkMapper.isNetworkUnavailable(exception)) SignInResult.NoConnection
-        SignInResult.ErrorGeneral
+        else SignInResult.ErrorGeneral
     }
 
     suspend fun signInWithGoogle(): GoogleIdTokenCredential? {
