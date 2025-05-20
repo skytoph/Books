@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.auth.screen
+package com.skytoph.books.ui.feature_sign_in.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,11 +12,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.skytoph.books.ui.auth.component.SplashContent
-import com.skytoph.books.ui.auth.event.AuthEvent
-import com.skytoph.books.ui.auth.mapper.map
-import com.skytoph.books.ui.auth.viewmodel.AuthViewModel
 import com.skytoph.books.ui.component.PopupSnackbar
+import com.skytoph.books.ui.feature_sign_in.component.SplashContent
+import com.skytoph.books.ui.feature_sign_in.event.AuthEvent
+import com.skytoph.books.ui.feature_sign_in.mapper.map
+import com.skytoph.books.ui.feature_sign_in.viewmodel.AuthViewModel
 import com.skytoph.books.ui.snackbar.SnackbarMessage
 
 @Composable

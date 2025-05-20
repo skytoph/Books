@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.auth.messages
+package com.skytoph.books.ui.feature_sign_in.messages
 
 import com.skytoph.books.R
 import com.skytoph.books.ui.snackbar.SnackbarMessage

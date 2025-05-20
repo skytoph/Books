@@ -7,7 +7,7 @@ import com.skytoph.books.core.key.KeyProvider
 import com.skytoph.books.core.util.NetworkExceptionCheck
 import com.skytoph.books.domain.auth.IsSignedIn
 import com.skytoph.books.domain.auth.SignInClient
-import com.skytoph.books.ui.auth.client.SignInWithGoogleClient
+import com.skytoph.books.ui.feature_sign_in.client.SignInWithGoogleClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

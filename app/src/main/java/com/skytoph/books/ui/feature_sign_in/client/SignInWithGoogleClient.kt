@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.auth.client
+package com.skytoph.books.ui.feature_sign_in.client
 
 import android.content.Context
 import androidx.credentials.Credential

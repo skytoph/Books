@@ -4,8 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.skytoph.books.ui.auth.screen.SplashScreen
-import com.skytoph.books.ui.auth.viewmodel.AuthViewModel
+import com.skytoph.books.ui.feature_sign_in.screen.SplashScreen
+import com.skytoph.books.ui.feature_sign_in.viewmodel.AuthViewModel
 import com.skytoph.books.ui.nav.Graph
 
 fun NavGraphBuilder.authNavigation(controller: NavHostController, viewModel: AuthViewModel) {

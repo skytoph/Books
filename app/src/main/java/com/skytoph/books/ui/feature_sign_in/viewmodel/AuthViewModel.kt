@@ -1,13 +1,13 @@
-package com.skytoph.books.ui.auth.viewmodel
+package com.skytoph.books.ui.feature_sign_in.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skytoph.books.domain.auth.IsSignedIn
 import com.skytoph.books.domain.usecase.CheckAuthStateUseCase
 import com.skytoph.books.domain.usecase.SignInUseCase
-import com.skytoph.books.ui.auth.event.AuthEvent
-import com.skytoph.books.ui.auth.mapper.mapResult
-import com.skytoph.books.ui.auth.state.AuthState
+import com.skytoph.books.ui.feature_sign_in.event.AuthEvent
+import com.skytoph.books.ui.feature_sign_in.mapper.mapResult
+import com.skytoph.books.ui.feature_sign_in.state.AuthState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

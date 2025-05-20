@@ -1,7 +1,7 @@
-package com.skytoph.books.ui.auth.event
+package com.skytoph.books.ui.feature_sign_in.event
 
-import com.skytoph.books.ui.auth.state.AuthErrorState
-import com.skytoph.books.ui.auth.state.AuthState
+import com.skytoph.books.ui.feature_sign_in.state.AuthErrorState
+import com.skytoph.books.ui.feature_sign_in.state.AuthState
 import kotlinx.coroutines.flow.MutableStateFlow
 
 sealed interface AuthEvent {

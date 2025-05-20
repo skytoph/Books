@@ -1,7 +1,7 @@
-package com.skytoph.books.ui.auth.mapper
+package com.skytoph.books.ui.feature_sign_in.mapper
 
-import com.skytoph.books.ui.auth.messages.Message
-import com.skytoph.books.ui.auth.state.AuthErrorState
+import com.skytoph.books.ui.feature_sign_in.messages.Message
+import com.skytoph.books.ui.feature_sign_in.state.AuthErrorState
 import com.skytoph.books.ui.snackbar.SnackbarMessage
 
 fun AuthErrorState.map(): SnackbarMessage = when (this) {

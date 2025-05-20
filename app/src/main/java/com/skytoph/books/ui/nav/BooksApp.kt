@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.skytoph.books.ui.auth.viewmodel.AuthViewModel
+import com.skytoph.books.ui.feature_sign_in.viewmodel.AuthViewModel
 import com.skytoph.books.ui.nav.auth.authNavigation
 
 @Composable

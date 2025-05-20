@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.auth.component
+package com.skytoph.books.ui.feature_sign_in.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

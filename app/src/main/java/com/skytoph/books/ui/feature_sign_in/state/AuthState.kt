@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.auth.state
+package com.skytoph.books.ui.feature_sign_in.state
 
 data class AuthState(
     val isSignedIn: Boolean,

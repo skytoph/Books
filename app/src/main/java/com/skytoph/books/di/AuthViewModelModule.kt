@@ -6,7 +6,7 @@ import com.skytoph.books.domain.usecase.CheckAuthStateUseCase
 import com.skytoph.books.domain.usecase.CheckAuthStateUseCaseImpl
 import com.skytoph.books.domain.usecase.SignInUseCase
 import com.skytoph.books.domain.usecase.SignInUseCaseImpl
-import com.skytoph.books.ui.auth.viewmodel.AuthViewModel
+import com.skytoph.books.ui.feature_sign_in.viewmodel.AuthViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
