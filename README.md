@@ -4,6 +4,11 @@ User can sign in with Google, browse book categories and see books with details 
 Data is fetched using Retrofit and book lists are saved locally using Room database.
 The app follows MVVM and Clean Architecture.
 
+<img src="https://github.com/user-attachments/assets/ced75288-fb7a-4dc9-8f65-cca995c77026" width="250">
+<img src="https://github.com/user-attachments/assets/0b5d948f-3ebe-4c91-8e16-769b1e7bd63e" width="250">
+<img src="https://github.com/user-attachments/assets/2607feca-645d-46b5-b511-1f01c3339595" width="250">
+
+
 ## Technologies
 - [Jetpack Compose](https://developer.android.com/jetpack/compose): UI toolkit
 - [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html): Lightweight concurrency for async work
