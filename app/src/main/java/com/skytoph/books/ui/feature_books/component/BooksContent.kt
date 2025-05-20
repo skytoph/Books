@@ -1,6 +1,5 @@
 package com.skytoph.books.ui.feature_books.component
 
-import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -32,31 +31,29 @@ fun BooksContent(
     expand: (Int) -> Unit = {},
     buy: (BookUi) -> Unit = {},
 ) {
-    Crossfade(targetState = state.data) { data ->
-        Box(
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            when (data) {
-                DataState.Loading -> Loading(
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .size(80.dp)
-                )
+    Box(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        when (state.data) {
+            DataState.Loading -> Loading(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(80.dp)
+            )
 
-                is DataState.Success -> BooksList(
-                    books = data.books,
-                    expandedIndex = data.expanded,
-                    expand = expand,
-                    buy = buy
-                )
+            is DataState.Success -> BooksList(
+                books = state.data.books,
+                expandedIndex = state.data.expanded,
+                expand = expand,
+                buy = buy
+            )
 
-                DataState.Empty -> ErrorFullscreen(
-                    modifier = Modifier.align(Alignment.Center),
-                    error = stringResource(R.string.fail_books_list_empty)
-                )
+            DataState.Empty -> ErrorFullscreen(
+                modifier = Modifier.align(Alignment.Center),
+                error = stringResource(R.string.fail_books_list_empty)
+            )
 
-                DataState.Error -> {}
-            }
+            DataState.Error -> {}
         }
     }
 }

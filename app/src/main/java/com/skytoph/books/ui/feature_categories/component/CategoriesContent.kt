@@ -1,6 +1,6 @@
 package com.skytoph.books.ui.feature_categories.component
 
-import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,29 +33,27 @@ fun CategoriesContent(
     onCategoryClick: (CategoryUi) -> Unit = { },
     loadCategories: (() -> Unit)? = null
 ) {
-    Crossfade(targetState = state.data) { data ->
-        Box(
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            when (data) {
-                DataState.Loading -> Loading(
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .size(80.dp)
-                )
+    Box(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        when (state.data) {
+            DataState.Loading -> Loading(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(80.dp)
+            )
 
-                is DataState.Success -> CategoriesList(
-                    categories = data.categories,
-                    onCategoryClick = onCategoryClick
-                )
+            is DataState.Success -> CategoriesList(
+                categories = state.data.categories,
+                onCategoryClick = onCategoryClick
+            )
 
-                else -> ErrorFullscreen(
-                    modifier = Modifier.align(Alignment.Center),
-                    error = stringResource(R.string.fail_loading_books),
-                    isLoading = data is DataState.Loading,
-                    retry = loadCategories
-                )
-            }
+            else -> ErrorFullscreen(
+                modifier = Modifier.align(Alignment.Center),
+                error = stringResource(R.string.fail_loading_books),
+                isLoading = state.data is DataState.Loading,
+                retry = loadCategories
+            )
         }
     }
 }
@@ -67,6 +66,9 @@ fun CategoriesList(categories: List<CategoryUi>, onCategoryClick: (CategoryUi) -
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
+        item {
+            Spacer(Modifier.height(0.dp))
+        }
         items(items = categories) { category ->
             CategoryItem(category = category, onClick = { onCategoryClick(category) })
         }
@@ -80,6 +82,26 @@ fun CategoriesList(categories: List<CategoryUi>, onCategoryClick: (CategoryUi) -
 @Composable
 private fun CategoriesPreview(@PreviewParameter(CategoriesPreviewProvider::class) data: List<CategoryUi>) {
     BooksTheme {
-        CategoriesContent(state = CategoriesUiState(data = DataState.Success(data)))
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            CategoriesContent(state = CategoriesUiState(data = DataState.Success(data)))
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun DarkCategoriesPreview(@PreviewParameter(CategoriesPreviewProvider::class) data: List<CategoryUi>) {
+    BooksTheme(darkTheme = true) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            CategoriesContent(state = CategoriesUiState(data = DataState.Success(data)))
+        }
     }
 }
