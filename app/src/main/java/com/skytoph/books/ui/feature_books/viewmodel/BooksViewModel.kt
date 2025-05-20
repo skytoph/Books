@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.skytoph.books.domain.usecase.GetBooksUseCase
-import com.skytoph.books.ui.feature_books.BooksEvent
+import com.skytoph.books.ui.feature_books.event.BooksEvent
 import com.skytoph.books.ui.feature_books.state.BooksUiState
 import com.skytoph.books.ui.mapper.mapResult
-import com.skytoph.books.ui.nav.BooksRoutes
+import com.skytoph.books.ui.nav.books.BooksRoutes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

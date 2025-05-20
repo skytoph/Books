@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.nav
+package com.skytoph.books.ui.nav.books
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
@@ -22,7 +22,7 @@ import com.skytoph.books.ui.feature_categories.screen.CategoriesScreen
 import com.skytoph.books.ui.snackbar.SnackbarMessage
 
 @Composable
-fun MainNavGraph(
+fun BooksNavGraph(
     controller: NavHostController,
     showMessage: (SnackbarMessage) -> Unit,
     updateAppBar: (AppBarState) -> Unit

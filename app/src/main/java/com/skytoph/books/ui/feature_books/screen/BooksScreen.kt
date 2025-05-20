@@ -14,8 +14,8 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.skytoph.books.ui.appbar.AppBarState
-import com.skytoph.books.ui.feature_books.BooksEvent
 import com.skytoph.books.ui.feature_books.component.BooksContent
+import com.skytoph.books.ui.feature_books.event.BooksEvent
 import com.skytoph.books.ui.feature_books.messages.BooksMessages
 import com.skytoph.books.ui.feature_books.state.DataState
 import com.skytoph.books.ui.feature_books.viewmodel.BooksViewModel

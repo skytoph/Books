@@ -3,7 +3,7 @@ package com.skytoph.books.ui.feature_categories.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skytoph.books.domain.usecase.GetCategoriesUseCase
-import com.skytoph.books.ui.feature_categories.CategoriesEvent
+import com.skytoph.books.ui.feature_categories.event.CategoriesEvent
 import com.skytoph.books.ui.feature_categories.state.CategoriesUiState
 import com.skytoph.books.ui.feature_categories.state.DataState
 import com.skytoph.books.ui.mapper.CategoryUiMapper

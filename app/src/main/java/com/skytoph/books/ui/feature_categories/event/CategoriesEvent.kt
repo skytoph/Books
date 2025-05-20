@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.feature_categories
+package com.skytoph.books.ui.feature_categories.event
 
 import com.skytoph.books.ui.feature_categories.state.CategoriesUiState
 import com.skytoph.books.ui.feature_categories.state.DataState

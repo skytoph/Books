@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.nav
+package com.skytoph.books.ui.nav.main
 
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.nav
+package com.skytoph.books.ui.nav.books
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -8,6 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.skytoph.books.ui.feature_sign_in.viewmodel.AuthViewModel
 import com.skytoph.books.ui.nav.auth.authNavigation
+import com.skytoph.books.ui.nav.main.Graph
+import com.skytoph.books.ui.nav.main.MainScreen
 
 @Composable
 fun BooksApp(

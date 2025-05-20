@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.skytoph.books.ui.nav
+package com.skytoph.books.ui.nav.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +32,7 @@ import androidx.navigation.compose.rememberNavController
 import com.skytoph.books.R
 import com.skytoph.books.ui.appbar.AppBarViewModel
 import com.skytoph.books.ui.component.PopupSnackbar
+import com.skytoph.books.ui.nav.books.BooksNavGraph
 import com.skytoph.books.ui.snackbar.SnackbarMessage
 import kotlinx.coroutines.launch
 
@@ -81,7 +82,7 @@ fun MainScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            MainNavGraph(
+            BooksNavGraph(
                 controller = navController,
                 showMessage = {
                     coroutineScope.launch { snackbarHostState.showSnackbar(it) }

@@ -1,4 +1,4 @@
-package com.skytoph.books.ui.feature_books
+package com.skytoph.books.ui.feature_books.event
 
 import com.skytoph.books.ui.feature_books.state.BooksUiState
 import com.skytoph.books.ui.feature_books.state.DataState
