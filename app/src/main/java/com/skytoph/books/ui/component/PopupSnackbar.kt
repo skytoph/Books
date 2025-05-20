@@ -1,7 +1,6 @@
 package com.skytoph.books.ui.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,9 +25,7 @@ fun PopupSnackbar(message: String, modifier: Modifier = Modifier) {
         shape = MaterialTheme.shapes.medium,
         containerColor = MaterialTheme.colorScheme.primaryContainer,
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        modifier = modifier
-            .padding(16.dp)
-            .border(width = 1.dp, color = MaterialTheme.colorScheme.primary, shape = MaterialTheme.shapes.medium)
+        modifier = modifier.padding(16.dp)
     ) {
         Box(
             modifier = Modifier

@@ -35,5 +35,8 @@ fun CategoriesScreen(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    CategoriesContent(state = state, onCategoryClick = navigateToBooks)
+    CategoriesContent(
+        state = state,
+        onCategoryClick = navigateToBooks,
+        loadCategories = { viewModel.updateCategories() })
 }

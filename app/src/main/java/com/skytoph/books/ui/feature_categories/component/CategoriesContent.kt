@@ -1,19 +1,23 @@
 package com.skytoph.books.ui.feature_categories.component
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.skytoph.books.R
 import com.skytoph.books.ui.component.ErrorFullscreen
 import com.skytoph.books.ui.component.Loading
 import com.skytoph.books.ui.feature_categories.state.CategoriesUiState
@@ -23,19 +27,34 @@ import com.skytoph.books.ui.preview.CategoriesPreviewProvider
 import com.skytoph.books.ui.theme.BooksTheme
 
 @Composable
-fun CategoriesContent(state: CategoriesUiState, onCategoryClick: (CategoryUi) -> Unit = { }) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        when (state.data) {
-            DataState.Loading -> Loading(modifier = Modifier.align(Alignment.Center))
+fun CategoriesContent(
+    state: CategoriesUiState,
+    onCategoryClick: (CategoryUi) -> Unit = { },
+    loadCategories: (() -> Unit)? = null
+) {
+    Crossfade(targetState = state.data) { data ->
+        Box(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            when (data) {
+                DataState.Loading -> Loading(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .size(80.dp)
+                )
 
-            is DataState.Success -> CategoriesList(
-                categories = state.data.categories,
-                onCategoryClick = onCategoryClick
-            )
+                is DataState.Success -> CategoriesList(
+                    categories = data.categories,
+                    onCategoryClick = onCategoryClick
+                )
 
-            else -> ErrorFullscreen(modifier = Modifier.align(Alignment.Center))
+                else -> ErrorFullscreen(
+                    modifier = Modifier.align(Alignment.Center),
+                    error = stringResource(R.string.fail_loading_books),
+                    isLoading = data is DataState.Loading,
+                    retry = loadCategories
+                )
+            }
         }
     }
 }

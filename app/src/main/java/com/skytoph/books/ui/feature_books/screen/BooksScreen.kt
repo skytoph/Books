@@ -45,7 +45,7 @@ fun BooksScreen(
     }
 
     LaunchedEffect(state.data) {
-        if (state.data is DataState.Empty) {
+        if (state.data is DataState.Error) {
             showMessage(BooksMessages.failedToLoadBooks)
             navigateUp()
         }

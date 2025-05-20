@@ -10,7 +10,8 @@
     <string name="user_agent">Android 8.0</string>
 
 
-    <string name="fail_loading_books">Failed to load books</string>
+    <string name="fail_loading_books">Failed to load books.</string>
+    <string name="fail_books_list_empty">List of books is empty.</string>
     <string name="title_categories">Categories</string>
     <string name="label_category_published">published</string>
 
@@ -23,4 +24,8 @@
     <string name="book_label_rank">Rank: %1$s</string>
     <string name="book_label_button_buy">Buy</string>
     <string name="label_crossfade_book_description">label_crossfade_book_description</string>
+    <string name="button_sign_in_with_google">Sign In with Google</string>
+    <string name="label_icon_logo">logo</string>
+    <string name="button_label_retry">Retry</string>
+    <string name="splash_label">Welcome to Books</string>
 </resources>
