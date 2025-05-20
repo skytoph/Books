@@ -24,7 +24,7 @@ The app follows MVVM and Clean Architecture.
 ## Setup
 - Clone the repo:
 ```
-git clone https://github.com/your-username/books.git
+git clone https://github.com/skytoph/Books
 ```
 
 
