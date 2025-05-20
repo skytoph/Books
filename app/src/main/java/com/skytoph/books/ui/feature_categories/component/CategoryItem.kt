@@ -34,7 +34,8 @@ fun CategoryItem(
         modifier = Modifier
             .fillMaxWidth(),
         elevation = CardDefaults.cardElevation(4.dp),
-        shape = MaterialTheme.shapes.small
+        shape = MaterialTheme.shapes.small,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Row(
             modifier = Modifier

@@ -1,38 +1,35 @@
 package com.skytoph.books.ui.theme
 
 import android.app.Activity
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.LocalActivity
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
+    background = PurpleBlack,
     primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
+    tertiary = Pink80,
+    surfaceVariant = PurpleGreyDark
 )
 
 private val LightColorScheme = lightColorScheme(
+    background = Gray,
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40,
-    scrim = Color.Red,
-
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    surfaceVariant = GrayLight
 )
 
 @Composable
@@ -40,6 +37,7 @@ fun BooksTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
+    val context = LocalActivity.current as? ComponentActivity
     val colorScheme = when {
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
@@ -48,9 +46,18 @@ fun BooksTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
-            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = !darkTheme
+            WindowCompat.getInsetsController(window, view).apply {
+                isAppearanceLightStatusBars = !darkTheme
+                isAppearanceLightNavigationBars = !darkTheme
+            }
         }
+    }
+    DisposableEffect(darkTheme) {
+        context?.enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Gray.toArgb(), PurpleBlack.toArgb())
+        )
+
+        onDispose { }
     }
     MaterialTheme(
         colorScheme = colorScheme,
