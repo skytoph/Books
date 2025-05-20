@@ -3,6 +3,7 @@ package com.skytoph.books.di
 import android.content.Context
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import com.skytoph.books.core.key.KeyProvider
 import com.skytoph.books.core.util.NetworkExceptionCheck
 import com.skytoph.books.domain.auth.IsSignedIn
 import com.skytoph.books.domain.auth.SignInClient
@@ -20,8 +21,12 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun client(@ApplicationContext context: Context, mapper: NetworkExceptionCheck): SignInWithGoogleClient =
-        SignInWithGoogleClient(context = context, auth = Firebase.auth, networkMapper = mapper)
+    fun client(
+        @ApplicationContext context: Context,
+        mapper: NetworkExceptionCheck,
+        key: KeyProvider
+    ): SignInWithGoogleClient =
+        SignInWithGoogleClient(context = context, auth = Firebase.auth, networkMapper = mapper, key = key)
 
     @Provides
     @IsSignedInClient

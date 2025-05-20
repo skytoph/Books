@@ -11,7 +11,7 @@ import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.skytoph.books.BuildConfig
+import com.skytoph.books.core.key.KeyProvider
 import com.skytoph.books.core.util.NetworkExceptionCheck
 import com.skytoph.books.domain.auth.SignInClient
 import com.skytoph.books.domain.usecase.SignInResult
@@ -21,10 +21,11 @@ class SignInWithGoogleClient(
     private val context: Context,
     private val auth: FirebaseAuth,
     private val networkMapper: NetworkExceptionCheck,
+    private val key: KeyProvider
 ) : SignInClient {
 
     private val googleIdOption: GetSignInWithGoogleOption by lazy {
-        GetSignInWithGoogleOption.Builder(BuildConfig.WEB_CLIENT_ID).build()
+        GetSignInWithGoogleOption.Builder(key.authWebClientId).build()
     }
 
     override fun isSignedIn(): Boolean = auth.currentUser != null
